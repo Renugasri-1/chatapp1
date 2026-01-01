@@ -1,0 +1,375 @@
+{
+	"info": {
+		"_postman_id": "9ca08ec0-fc68-4fd3-bac5-a0bc49d90118",
+		"name": "Talk-A-Tive",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45764441"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Chats",
+					"item": [
+						{
+							"name": "Create or Access a One on one Chat",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"description": "Creates or retrieves a one-to-one chat between two users.  \nIf a chat already exists, it returns the existing chat.  \nRequires JWT authentication.  \nAccessible to authenticated users only."
+							},
+							"response": []
+						},
+						{
+							"name": "Fetching Chats",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"description": "Fetches all chats (one-to-one and group chats) for the logged-in user.  \nRequires JWT authentication."
+							},
+							"response": []
+						},
+						{
+							"name": "Create a group",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Rename the Group",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"chatId\":\"68f779cb6abe54ffdf089425\",\r\n    \"chatName\":\" Test Group Updated\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/chat/rename",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"chat",
+										"rename"
+									]
+								},
+								"description": "Renames an existing group chat.  \nOnly the group admin is allowed to rename the group.  \nRequires JWT authentication."
+							},
+							"response": []
+						},
+						{
+							"name": "Create or Access a One on one Chat",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\":\"68f6811c2c786a5fd1c08b94\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/chat",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"chat"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetching Chats",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/chat",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"chat"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a group",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Test Group\",\r\n    \"users\":\"[\\\"68f6517d92b04965c6bbd6b9\\\",\\\"68f6811c2c786a5fd1c08b94\\\"]\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/chat/group",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"chat",
+										"group"
+									]
+								},
+								"description": "Creates a new group chat.  \nThe logged-in user becomes the group admin.  \nRequires JWT authentication."
+							},
+							"response": []
+						},
+						{
+							"name": "Add user to Group",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"chatId\":\"68f779cb6abe54ffdf089425\",\r\n    \"userId\":\"68f77cc1f0da240c36383255\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/chat/groupadd",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"chat",
+										"groupadd"
+									]
+								},
+								"description": "Adds a user to an existing group chat.  \nOnly the group admin is authorized to add users.  \nRequires JWT authentication."
+							},
+							"response": []
+						},
+						{
+							"name": "Remove user from Group",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"chatId\":\"68f779cb6abe54ffdf089425\",\r\n    \"userId\":\"68f77cc1f0da240c36383255\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/chat/groupremove",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"chat",
+										"groupremove"
+									]
+								},
+								"description": "Removes a user from a group chat.  \nOnly the group admin can perform this action.  \nRequires JWT authentication."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Registration",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Authenticates a user using email and password.  \nOn successful login, a JWT token is returned.  \nThis token must be included in the Authorization header to access protected APIs."
+					},
+					"response": []
+				},
+				{
+					"name": "Search User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/user?search=renuga&lastname=sri",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"user"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "renuga"
+								},
+								{
+									"key": "lastname",
+									"value": "sri"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registration",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Guest User\",\r\n    \"email\":\"guest@example.com\",\r\n    \"password\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/user",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						},
+						"description": "Registers a new user in the system.  \nThe password is securely hashed using bcrypt before storing in MongoDB.  \nNo authentication is required to access this API."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "Sending A New Message",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Sends a new message to a one-to-one or group chat.  \nOnly authenticated users who are members of the chat can send messages.  \nRequires JWT authentication."
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch All Messages for a Chat",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Fetches all messages for a specific chat.  \nAccessible only to authenticated users who are part of the chat.  \nRequires JWT authentication."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
