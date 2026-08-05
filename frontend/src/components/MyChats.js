@@ -85,7 +85,7 @@ const MyChats = ({ fetchAgain }) => {
 
           {chats ? (
           <Stack overflowY="scroll">
-            {chats.map((chat) => (
+            {chats?.map((chat) => (
               <Box
                 onClick={() => setSelectedChat(chat)}
                 cursor="pointer"
@@ -98,7 +98,7 @@ const MyChats = ({ fetchAgain }) => {
               >
                 <Text>
                   {!chat.isGroupChat
-                    ? getSender(loggedUser, chat.users)
+                    ? getSender(loggedUser, chat.users || [])
                     : chat.chatName}
                 </Text>
                 {/*{chat.latestMessage && (
