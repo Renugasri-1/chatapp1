@@ -8,8 +8,6 @@
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
-    "ajv": "8.11.0",
-    "ajv-keywords": "5.1.0",
     "axios": "^1.6.0",
     "framer-motion": "^6.5.1",
     "lottie-react": "^2.4.0",
