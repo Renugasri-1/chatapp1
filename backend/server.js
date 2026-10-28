@@ -34,7 +34,7 @@ if (fs.existsSync(frontendPath)) {
   console.log("Serving frontend from:", frontendPath);
   app.use(express.static(frontendPath));
 
-  app.get("/{*any}", (req, res) => {
+  app.get("*", (req, res) => {
     res.sendFile(path.join(frontendPath, "index.html"));
   });
 } else {
@@ -51,12 +51,12 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000
 
-const server = app.listen(5000, console.log(`Server Started on PORT ${PORT}`.blue.bold));
+const server = app.listen(PORT, console.log(`Server Started on PORT ${PORT}`.blue.bold));
 
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*",
     // credentials: true,
   },
 });
