@@ -29,17 +29,22 @@ const __dirname1 = path.resolve();
 
 // ----- DEPLOYMENT - ALWAYS WORKS -----
 const frontendPath = path.join(__dirname1, "frontend", "build");
+const indexPath = path.join(frontendPath, "index.html");
 
-if (fs.existsSync(frontendPath)) {
+console.log("Checking frontendPath:", frontendPath);
+console.log("Frontend folder exists?", fs.existsSync(frontendPath));
+console.log("Index.html exists?", fs.existsSync(indexPath));
+
+if (fs.existsSync(indexPath)) {
   console.log("Serving frontend from:", frontendPath);
   app.use(express.static(frontendPath));
-
   app.get(/.*/, (req, res) => {
-    res.sendFile(path.join(frontendPath, "index.html"));
+    res.sendFile(indexPath);
   });
 } else {
+  console.log("Build folder NOT found, serving API only");
   app.get("/", (req, res) => {
-    res.send("API is Running Successfully");
+    res.send("API is Running Successfully - Frontend build missing");
   });
 }
 
